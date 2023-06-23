@@ -4,8 +4,8 @@ This project was completed as part of the second sprint of the ALX Software Engi
 
 ## Authors
 
-* [Mawuli Arnold Afayedor](github.com/curtarnolds)
-* [Caleb Akpe]()
+* [Mawuli Arnold Afayedor](https://github.com/curtarnolds)
+* [Caleb Akpe](https://github.com/#)
 
 ## Content
 
