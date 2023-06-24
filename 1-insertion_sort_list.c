@@ -10,7 +10,6 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *node = *list, *temp_next, *p_node, *n_node, *p2_nodes;
 	bool go_to_nxt_node = true;
-	int count = 0;
 
 	if (list == NULL || (*list)->next == NULL)
 		return;
@@ -35,7 +34,7 @@ void insertion_sort_list(listint_t **list)
 			if (n_node)
 				n_node->prev = p_node;
 			go_to_nxt_node	 = false;
-			if (!p2_nodes)
+			if (p2_nodes == NULL)
 			{
 				*list = node;
 				go_to_nxt_node = true;
@@ -44,7 +43,7 @@ void insertion_sort_list(listint_t **list)
 		}
 		else
 			go_to_nxt_node = true;
-			if (go_to_nxt_node)
-				node = temp_next;
+		if (go_to_nxt_node)
+			node = temp_next;
 	}
 }
