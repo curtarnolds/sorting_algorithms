@@ -29,10 +29,9 @@ void quick_sort(int *array, size_t size)
  * @size: The size of the array
  * Return: The index of the pivot
 */
-size_t lomuto_part(int *array, size_t size, size_t start, size_t end)
+size_t lomuto_part(int *array, size_t size, int start, int end)
 {
-	size_t temp_index, i;
-	int pivot;
+	int temp_index, i, pivot;
 
 	pivot = array[end];
 	temp_index = start - 1;
@@ -42,10 +41,12 @@ size_t lomuto_part(int *array, size_t size, size_t start, size_t end)
 		if (array[i] <= pivot)
 		{
 			temp_index++;
-			swap(&array[temp_index], &array[i], array, size);
+			if (temp_index != i)
+				swap(&array[temp_index], &array[i], array, size);
 		}
 	}
-	swap(&array[temp_index + 1], &array[end], array, size);
+	if (temp_index + 1 != end)
+		swap(&array[temp_index + 1], &array[end], array, size);
 	return (temp_index + 1);
 }
 
@@ -77,12 +78,13 @@ void swap(int *first, int *second, const int *array, size_t size)
  */
 void sort_algo(int *array, size_t size, int start, int end)
 {
-	size_t p_index;
+	int p_index;
 
 	if (start >= end || start < 0)
 		return;
 
 	p_index = lomuto_part(array, size, start, end);
-	sort_algo(array, size, start, p_index - 1);
+	if (p_index - 1 > start)
+		sort_algo(array, size, start, p_index - 1);
 	sort_algo(array, size, p_index + 1, end);
 }
