@@ -1,6 +1,7 @@
 #include "sort.h"
 
 
+
 /**
  * quick_sort - Sorts an array of integers in ascending order using
  * the QuickSort algorithm (with Lomuto partition scheme)
@@ -41,11 +42,10 @@ size_t lomuto_part(int *array, size_t size, size_t start, size_t end)
 		if (array[i] <= pivot)
 		{
 			temp_index++;
-			swap(&array[temp_index], &array[i]);
-			print_array(array, size);
+			swap(&array[temp_index], &array[i], array, size);
 		}
 	}
-	swap(&array[temp_index + 1], &array[end]);
+	swap(&array[temp_index + 1], &array[end], array, size);
 	return (temp_index + 1);
 }
 
@@ -57,13 +57,14 @@ size_t lomuto_part(int *array, size_t size, size_t start, size_t end)
  * @array: An array of integers
  * @size: The size of the array
  */
-void swap(int *first, int *second)
+void swap(int *first, int *second, const int *array, size_t size)
 {
 	int temp;
 
 	temp = *first;
 	*first = *second;
 	*second = temp;
+	print_array(array, size);
 }
 
 
@@ -80,7 +81,7 @@ void sort_algo(int *array, size_t size, int start, int end)
 
 	if (start < end)
 	{
-		p_index = lomuto_part(array, size, start, end);
+		p_index = lomuto_part(array, size, 0, end);
 		sort_algo(array, size, start, p_index - 1);
 		sort_algo(array, size, p_index + 1, end);
 	}
