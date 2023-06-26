@@ -79,10 +79,10 @@ void sort_algo(int *array, size_t size, int start, int end)
 {
 	size_t p_index;
 
-	if (start < end)
-	{
-		p_index = lomuto_part(array, size, 0, end);
-		sort_algo(array, size, start, p_index - 1);
-		sort_algo(array, size, p_index + 1, end);
-	}
+	if (start >= end || start < 0)
+		return;
+
+	p_index = lomuto_part(array, size, 0, end);
+	sort_algo(array, size, start, p_index - 1);
+	sort_algo(array, size, p_index + 1, end);
 }
