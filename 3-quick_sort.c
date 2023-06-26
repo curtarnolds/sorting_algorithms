@@ -41,10 +41,11 @@ size_t lomuto_part(int *array, size_t size, size_t start, size_t end)
 		if (array[i] <= pivot)
 		{
 			temp_index++;
-			swap(&array[temp_index], &array[i], array, size);
+			swap(&array[temp_index], &array[i]);
+			print_array(array, size);
 		}
 	}
-	swap(&array[temp_index + 1], &array[end], array, size);
+	swap(&array[temp_index + 1], &array[end]);
 	return (temp_index + 1);
 }
 
@@ -56,14 +57,13 @@ size_t lomuto_part(int *array, size_t size, size_t start, size_t end)
  * @array: An array of integers
  * @size: The size of the array
  */
-void swap(int *first, int *second, const int *array, size_t size)
+void swap(int *first, int *second)
 {
 	int temp;
 
 	temp = *first;
 	*first = *second;
 	*second = temp;
-	print_array(array, size);
 }
 
 
