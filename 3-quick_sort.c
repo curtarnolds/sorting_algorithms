@@ -42,23 +42,23 @@ size_t lomuto_part(int *array, size_t size, int start, int end)
 		{
 			temp_index++;
 			if (temp_index != i)
-				swap(&array[temp_index], &array[i], array, size);
+				swap_arr(&array[temp_index], &array[i], array, size);
 		}
 	}
 	if (temp_index + 1 != end)
-		swap(&array[temp_index + 1], &array[end], array, size);
+		swap_arr(&array[temp_index + 1], &array[end], array, size);
 	return (temp_index + 1);
 }
 
 
 /**
- * swap - Swap two integers
+ * swap_arr - Swap two integers
  * @first: First integer
  * @second: Second integer
  * @array: An array of integers
  * @size: The size of the array
  */
-void swap(int *first, int *second, const int *array, size_t size)
+void swap_arr(int *first, int *second, const int *array, size_t size)
 {
 	int temp;
 
