@@ -28,4 +28,6 @@ void swap_arr(int *first, int *second, const int *array, size_t size);
 void sort_algo(int *array, size_t size, int start, int end);
 void shell_sort(int *array, size_t size);
 void knuth_gen(int *gap_array, size_t size);
+void cocktail_sort_list(listint_t **list);
+void swap_list(listint_t *first_node, listint_t *second_node);
 #endif
