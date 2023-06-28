@@ -11,7 +11,7 @@ void insertion_sort_list(listint_t **list)
 	listint_t *node = *list, *temp_next, *p_node, *n_node, *p2_nodes;
 	bool go_to_nxt_node = true;
 
-	if (list == NULL || (*list)->next == NULL)
+	if (list == NULL || (*list)->next == NULL || *list == NULL)
 		return;
 	while (node)
 	{
