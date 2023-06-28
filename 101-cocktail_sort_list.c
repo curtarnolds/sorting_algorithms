@@ -27,7 +27,8 @@ void cocktail_sort_list(listint_t **list)
 				swapped = true;
 				print_list(*list);
 			}
-			node = n_node;
+			else
+				node = n_node;
 		}
 
 		if (!swapped)
@@ -45,7 +46,8 @@ void cocktail_sort_list(listint_t **list)
 				swapped = true;
 				print_list(*list);
 			}
-			node = p_node;
+			else
+				node = p_node;
 		}
 	}
 }
