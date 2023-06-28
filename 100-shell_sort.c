@@ -44,19 +44,19 @@ void shell_sort(int *array, size_t size)
 */
 void knuth_gen(int *gap_array, size_t size)
 {
-    size_t gap = 1;
+	size_t gap = 1;
 	int j;
 
-    while ((gap * 3) + 1 <= size)
+	while ((gap * 3) + 1 <= size)
 	{
-        gap = (gap * 3) + 1;
+		gap = (gap * 3) + 1;
 	}
 
 	j = 0;
-    while (gap > 0)
+	while (gap > 0)
 	{
-        gap_array[j] = gap;
-        gap = (gap - 1) / 3;
+		gap_array[j] = gap;
+		gap = (gap - 1) / 3;
 		j++;
-    }
+	}
 }
