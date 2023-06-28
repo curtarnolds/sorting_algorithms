@@ -13,7 +13,6 @@ void cocktail_sort_list(listint_t **list)
 
 	if (list == NULL || (*list)->next == NULL)
 		return;
-
 	node = *list;
 	while (swapped)
 	{
@@ -21,19 +20,19 @@ void cocktail_sort_list(listint_t **list)
 		while (node->next)
 		{
 			n_node = node->next;
+			p_node = node->prev;
 			if (node->n > node->next->n)
 			{
 				swap_list(node, node->next);
+				set_head_list(p_node, n_node, list);
 				swapped = true;
 				print_list(*list);
 			}
 			else
 				node = n_node;
 		}
-
 		if (!swapped)
 			break;
-
 		swapped = false;
 		while (node->prev)
 		{
@@ -41,8 +40,7 @@ void cocktail_sort_list(listint_t **list)
 			if (node->n < node->prev->n)
 			{
 				swap_list(node->prev, node);
-				if (node->prev == NULL)
-					*list = node;
+				set_head_list(node->prev, node, list);
 				swapped = true;
 				print_list(*list);
 			}
@@ -84,4 +82,17 @@ void swap_list(listint_t *first_node, listint_t *second_node)
 	}
 	else
 		first_node->next = NULL;
+}
+
+
+/**
+ * set_head_list - Update the head of  a linked list
+ * @h_node: Node to set as head
+ * @ch_node: The node to check for head
+ * @list: Previous head of the linked list
+*/
+void set_head_list(listint_t *ch_node, listint_t *h_node, listint_t **list)
+{
+	if (ch_node == NULL)
+		*list = h_node;
 }
