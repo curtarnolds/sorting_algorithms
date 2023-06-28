@@ -12,6 +12,9 @@ void shell_sort(int *array, size_t size)
 	int *gaps, temp, gapIndex;
 	size_t gap, i, j;
 
+	if (array == NULL || size < 2)
+		return;
+
 	gaps = (int *) calloc(size, sizeof(int));
 	knuth_gen(gaps, size);
 	gapIndex = 0;
@@ -30,7 +33,7 @@ void shell_sort(int *array, size_t size)
 		gapIndex++;
 		print_array(array, size);
 	}
-
+	free(gaps);
 }
 
 
